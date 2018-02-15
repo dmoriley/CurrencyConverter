@@ -1,0 +1,32 @@
+<template id="currency-converter-template">
+    <!-- <link rel="stylesheet" href="/UserCard/UserCard.css"> -->
+    <h3>Currency converter</h3>
+    
+    <label for="input-currency">Type in amount and select currency:</label>
+    <div id="input-currency">
+        <input type="text" placeholder="0.00" />
+        <select name="input-currency-type" id="input-currency-type">
+            <option value="CAD" selected="selected">CAD</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+        </select>
+    </div>
+
+    <label for="output-currency">Type in amount and select currency:</label>
+    <div id="output-currency">
+        <input type="text" placeholder="0.00" />
+        <select name="output-currency-type" id="output-currency-type">
+            <option value="CAD">CAD</option>
+            <option value="USD" selected="selected">USD</option>
+            <option value="EUR">EUR</option>
+        </select>
+    </div>
+
+    <p><a href="#">Disclaimer</a></p>
+    <div id="disclaimer-addition-info">
+        <p>Addtional Information:</p>
+        <p>This is the additional Information</p>
+    </div>
+
+</template>
+<script src="./CurrencyConverter.js"></script>

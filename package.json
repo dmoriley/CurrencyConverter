@@ -1,0 +1,23 @@
+{
+  "name": "currencyconverter",
+  "version": "1.0.0",
+  "description": "Currency Converter between CAD, USD and EUR",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmoriley/CurrencyConverter.git"
+  },
+  "author": "David O'Riley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmoriley/CurrencyConverter/issues"
+  },
+  "homepage": "https://github.com/dmoriley/CurrencyConverter#readme",
+  "dependencies": {
+    "live-server": "^1.2.0"
+  }
+}
