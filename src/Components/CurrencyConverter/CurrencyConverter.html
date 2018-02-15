@@ -3,8 +3,8 @@
     <h3>Currency converter</h3>
     
     <label for="input-currency">Type in amount and select currency:</label>
-    <div id="input-currency">
-        <input type="text" placeholder="0.00" />
+    <div>
+        <input id="input-currency" type="number" placeholder="0.00" />
         <select name="input-currency-type" id="input-currency-type">
             <option value="CAD" selected="selected">CAD</option>
             <option value="USD">USD</option>
@@ -12,9 +12,9 @@
         </select>
     </div>
 
-    <label for="output-currency">Type in amount and select currency:</label>
-    <div id="output-currency">
-        <input type="text" placeholder="0.00" />
+    <label for="output-currency">Converted Amount:</label>
+    <div>
+        <input id="output-currency" type="text" placeholder="0.00" disabled="disabled"/>
         <select name="output-currency-type" id="output-currency-type">
             <option value="CAD">CAD</option>
             <option value="USD" selected="selected">USD</option>
@@ -22,8 +22,8 @@
         </select>
     </div>
 
-    <p><a href="#">Disclaimer</a></p>
-    <div id="disclaimer-addition-info">
+    <p><a id="disclaimer">Disclaimer</a></p>
+    <div id="disclaimer-addition-info" style="display:block">
         <p>Addtional Information:</p>
         <p>This is the additional Information</p>
     </div>
