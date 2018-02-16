@@ -16,6 +16,8 @@
                }).then(res => {
                     Object.assign(rates,res); //assign the conversion values for that base to the rates object
                     return Promise.resolve(rates); //return the rate finished rate object
+               }).catch(err => {
+                    return Promise.reject(err);
                });
 
     }
@@ -30,6 +32,8 @@
                 .then(responseText => {
                     responseText.rates[base] = 1; //setup 1 to 1 conversion
                     return Promise.resolve({[base]: responseText.rates});
+                }).catch(err => {
+                    return Promise.reject(err);
                 });
     }
 

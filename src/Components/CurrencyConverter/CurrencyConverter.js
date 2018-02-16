@@ -2,7 +2,6 @@ const currentDocument = document.currentScript.ownerDocument;
 
 class CurrencyConverter extends HTMLElement {
     constructor() {
-      // If you define a constructor, always call super() first as it is required by the CE spec.
       super();
 
       this.state = {
@@ -39,7 +38,6 @@ class CurrencyConverter extends HTMLElement {
         const shadowRoot = this.attachShadow({mode: 'open'});
 
         // Select the template and clone it. Finally attach the cloned node to the shadowDOM's root.
-        // Current document needs to be defined to get DOM access to imported HTML
         const template = currentDocument.querySelector('#currency-converter-template');
         const instance = template.content.cloneNode(true);
         shadowRoot.appendChild(instance);
@@ -48,7 +46,11 @@ class CurrencyConverter extends HTMLElement {
         getAllConversionData().then(res => {
             this.setConversionValues(res)
             console.log(this.conversionValues);
-        });
+        }).catch(err => {
+            //if the api is down hide the content and display the error message
+            this.shadowRoot.querySelector('#content').style.display = 'none';
+            this.shadowRoot.querySelector('#noAPI').style.display = 'block';
+        });;
 
         //listener for when input-currency-type is changed
         this.shadowRoot.querySelector('#input-currency-type').addEventListener('change', e => {

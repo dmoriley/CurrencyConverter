@@ -4,6 +4,5 @@
  * @param {*Number} rate Currency rate to use in conversion
  */
 const calculateConvertedAmount = function(value, rate) {
-    console.log(`Value: ${value}, Rate: ${rate}`);
     return (value * rate).toFixed(2);
 }

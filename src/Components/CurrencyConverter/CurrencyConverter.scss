@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+}
+
+.centered {
+    padding: 30px;
+
+    .app {
+        border: 2px solid black;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 10px 20px;
+        width: 305px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+          #disclaimer-addition-info, #noAPI {
+           display:none;
+         }
+         
+         .content {
+           display:flex;
+           flex-direction: column;
+
+           input {
+            margin-top: 5px;
+            padding: 8px;
+            border-radius: 5px;
+            width: 60%;
+           }
+
+           select {
+               padding: 8px;
+               border-radius: 5px;
+               width: 30%;
+               background-color:lightgray;
+           }
+
+           label {
+               font-size: 12px;
+           }
+
+           .space-above {
+               margin-top:10px;
+           }
+
+           .disclaimer {
+               display:flex;
+               justify-content: flex-end;
+               padding: 15px 15px 0px 15px;
+               cursor: pointer;
+               text-decoration: underline;
+               color:blue;
+           }
+           #disclaimer-addition-info {
+               p {
+                   margin: 0;
+               }
+           }
+         }
+    
+         .title {
+             margin: 5px 0px;
+             width:100%;
+         }
+    }
+}

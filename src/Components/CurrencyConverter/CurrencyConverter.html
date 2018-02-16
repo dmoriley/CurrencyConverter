@@ -1,32 +1,41 @@
 <template id="currency-converter-template">
-    <!-- <link rel="stylesheet" href="/UserCard/UserCard.css"> -->
-    <h3>Currency converter</h3>
-    
-    <label for="input-currency">Type in amount and select currency:</label>
-    <div>
-        <input id="input-currency" type="number" placeholder="0.00" />
-        <select name="input-currency-type" id="input-currency-type">
-            <option value="CAD" selected="selected">CAD</option>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-        </select>
+    <link rel="stylesheet" type="text/css" href="src/Components/CurrencyConverter/CurrencyConverter.css">
+    <div class="centered">
+        <div class="app">
+            <h3 class="title">Currency converter</h3>
+        
+            <p id="noAPI">The server is down right now. Sorry about that try again later.</p>
+        
+            <div class="content">
+                <div class="space-above">
+                    <label for="input-currency">Type in amount and select currency:</label>
+                    <input id="input-currency" type="number" placeholder="0.00" />
+                    <select name="input-currency-type" id="input-currency-type">
+                        <option value="CAD" selected="selected">CAD</option>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                    </select>
+                </div>
+            
+                <div class="space-above">
+                    <label for="output-currency">Converted Amount:</label>
+                    <input id="output-currency" type="text" placeholder="0.00" disabled="disabled"/>
+                    <select name="output-currency-type" id="output-currency-type">
+                        <option value="CAD">CAD</option>
+                        <option value="USD" selected="selected">USD</option>
+                        <option value="EUR">EUR</option>
+                    </select>
+                </div>
+            
+                <div class="disclaimer"><a id="disclaimer">Disclaimer</a></div>
+                <div id="disclaimer-addition-info">
+                    <p>Addtional Information: <br/>
+                    This is the additional Information about the conversion rates.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <label for="output-currency">Converted Amount:</label>
-    <div>
-        <input id="output-currency" type="text" placeholder="0.00" disabled="disabled"/>
-        <select name="output-currency-type" id="output-currency-type">
-            <option value="CAD">CAD</option>
-            <option value="USD" selected="selected">USD</option>
-            <option value="EUR">EUR</option>
-        </select>
-    </div>
-
-    <p><a id="disclaimer">Disclaimer</a></p>
-    <div id="disclaimer-addition-info" style="display:block">
-        <p>Addtional Information:</p>
-        <p>This is the additional Information</p>
-    </div>
 
 </template>
 <script src="../../utils/utils.js"></script>

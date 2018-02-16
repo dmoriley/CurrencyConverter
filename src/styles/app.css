@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  body currency-converter {
+    float: left;
+    padding: 15px;
+  }
+  
