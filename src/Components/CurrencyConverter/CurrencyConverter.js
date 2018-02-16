@@ -45,7 +45,10 @@ class CurrencyConverter extends HTMLElement {
         shadowRoot.appendChild(instance);
 
         //get all the conversion data needed for the base's cad, usd and eur
-        this.getAllConversionData();
+        getAllConversionData().then(res => {
+            this.setConversionValues(res)
+            console.log(this.conversionValues);
+        });
 
         //listener for when input-currency-type is changed
         this.shadowRoot.querySelector('#input-currency-type').addEventListener('change', e => {
@@ -113,7 +116,8 @@ class CurrencyConverter extends HTMLElement {
     updateConversion() {
         let converted = this.state.inputValue;
         if(converted != '') {
-            converted = this.calculateConvertedAmount(this.state.baseCurrency,this.state.targetCurrency, parseFloat(this.state.inputValue));
+            const conversionRate = this.conversionValues[this.state.baseCurrency][this.state.targetCurrency];
+            converted = calculateConvertedAmount(parseFloat(this.state.inputValue), conversionRate);
             this.setState({converted});
         }
         this.shadowRoot.querySelector('#output-currency').value = converted; //set value in output box
@@ -156,55 +160,6 @@ class CurrencyConverter extends HTMLElement {
     updateTargetType(targetCurrency) {
         this.setState({targetCurrency});
         this.updateConversion();
-    }
-
-    /**
-     * Get the conversion data from fixer.io for all possible bases. Possible bases are: CAD, USD, EUR
-     * I chose to get them all at once because of there being only 3 possible bases it would be more efficient to 
-     * grab them all at once instead of constantly querying the api. If there were alot more this might not be
-     * the most efficient route.
-     */
-    getAllConversionData() {
-        // fetch('https://api.fixer.io/latest?base=CAD&symbols=USD,EUR')
-        this.getConversionData({base:'CAD',targets:['USD','EUR']});
-        this.getConversionData({base:'USD',targets:['CAD','EUR']});
-        this.getConversionData({base:'EUR',targets:['USD','EUR']});
-        // setTimeout(() => {
-        //     console.log(typeof this.conversionValues.CAD.USD);
-        // },500)
-    }
-
-    /**
-     * Get the conversion data of a supplied base for the supplied targets and set to the conversionValues property.
-     * @param {*Object} ConversionObject Object with the following pattern {base: CAD, targets: ['USD','EUR']} Only one base and as many targets as you want. 
-     */
-    getConversionData({base, targets}) {
-        fetch(`https://api.fixer.io/latest?base=${base}&symbols=${targets.toString()}`)
-        .then(response => response.json()) //takes response stream and resolves to a string
-        .then(responseText => {
-            responseText.rates[base] = 1; //setup 1 to 1 conversion
-            this.setConversionValues({[base]: responseText.rates});
-        });
-    }
-
-    calculateConvertedAmount(base, target, value) {
-        return (value * this.conversionValues[base][target]).toFixed(2);
-    }
-
-
-
-    render(userData) {
-        // // Fill the respective areas of the card using DOM manipulation APIs
-        // // All of our components elements reside under shadow dom. So we created a this.shadowRoot property
-        // // We use this property to call selectors so that the DOM is searched only under this subtree
-        // this.shadowRoot.querySelector('.card__full-name').innerHTML = userData.name;
-        // this.shadowRoot.querySelector('.card__user-name').innerHTML = userData.username;
-        // this.shadowRoot.querySelector('.card__website').innerHTML = userData.website;
-        // this.shadowRoot.querySelector('.card__address').innerHTML = `<h4>Address</h4>
-        //   ${userData.address.suite}, <br />
-        //   ${userData.address.street},<br />
-        //   ${userData.address.city},<br />
-        //   Zipcode: ${userData.address.zipcode}`
     }
     
   }
