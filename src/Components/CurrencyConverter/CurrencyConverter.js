@@ -165,4 +165,4 @@ class CurrencyConverter extends HTMLElement {
     
   }
   
-  customElements.define('currency-converter', CurrencyConverter);
+  window.customElements.define('currency-converter', CurrencyConverter);
