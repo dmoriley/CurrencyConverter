@@ -45,7 +45,6 @@ class CurrencyConverter extends HTMLElement {
         //get all the conversion data needed for the base's cad, usd and eur
         getAllConversionData().then(res => {
             this.setConversionValues(res)
-            console.log(this.conversionValues);
         }).catch(err => {
             //if the api is down hide the content and display the error message
             this.shadowRoot.querySelector('#content').style.display = 'none';
